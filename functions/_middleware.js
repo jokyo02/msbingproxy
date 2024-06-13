@@ -226,6 +226,7 @@ async function handleRequest(request, env,ctx) {
           retBody = retBody.replace(/https?:\/\/login\.live\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
           retBody = retBody.replace(/https?:\/\/copilot\.microsoft\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
           retBody = retBody.replace(/https?:\/\/www\.bing\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
+          retBody = retBody.replace(/https?:\/\/r\.bing\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
           retBody = retBody.replace(/https?:\/\/storage\.live\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
         }
         if (resUrl.pathname == "/") {
