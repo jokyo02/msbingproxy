@@ -60,9 +60,9 @@ async function handleRequest(request, env,ctx) {
         if (p == "/" || p.startsWith("/rp/") || p.startsWith("/chat") || p.startsWith("/search") || p == "/favicon.ico" || p.startsWith("/fd/") || p.startsWith("/rewardsapp/") || p.startsWith("/notifications/") || p.startsWith("/sa/") || p.startsWith("/rs/") || p.startsWith("/sharing/") || p.startsWith("/sydchat/") || p.startsWith("/turing/") || p.startsWith("/th") || p.startsWith("/Identity/") || p.startsWith("/hamburger/") || p.startsWith("/secure/") || p == "/bingufsync" || p == "/passport.aspx" || p.startsWith("/images/") || p.startsWith("/idp/") || p.startsWith("/cdx/") || p.startsWith("/pwa/") || p.startsWith("/videos/")) {
           url2.hostname = "www.bing.com";
         }
-        if ( p.startsWith("/turing/conversation/create")){
-           url2.hostname = "sokwith-proxybing.hf.space";
-        }
+    //    if ( p.startsWith("/turing/conversation/create")){
+    //       url2.hostname = "sokwith-proxybing.hf.space";
+    //    }
         if (p == "/GetCredentialType.srf" || p.startsWith("/ppsecure/") || p == "/login.srf" || p == "/GetOneTimeCode.srf" || p == "/GetSessionState.srf" || p == "/GetExperimentAssignments.srf" || p == "/logout.srf") {
           url2.hostname = "login.live.com";
         }
