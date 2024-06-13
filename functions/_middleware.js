@@ -221,7 +221,7 @@ async function handleRequest(request, env,ctx) {
         resHeaders.delete("Content-Md5");
         let retBody = await res.text();
         const resUrl = new URL(res.url);
-        if (!resUrl.pathname.startsWith("/turing/") && !resUrl.pathname.startsWith("/turnstile/") && !resUrl.pathname.startsWith("/cdn-cgi/")) {
+        if (!resUrl.pathname.startsWith("/turing/captcha/") && !resUrl.pathname.startsWith("/turnstile/") && !resUrl.pathname.startsWith("/cdn-cgi/")) {
           retBody = retBody.replace(/https?:\/\/sydney\.bing\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
           retBody = retBody.replace(/https?:\/\/login\.live\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
           retBody = retBody.replace(/https?:\/\/copilot\.microsoft\.com(:[0-9]{1,6})?/g, `${porxyOrigin}`);
