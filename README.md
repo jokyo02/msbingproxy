@@ -1,6 +1,6 @@
-# microsoft-copilot-porxy
+# www-bing-porxy
 
-## 声明：源码源自 https://github.com/jianjianai/microsoft-copilot-porxy 改写;
+## 声明：源码源自 https://github.com/jianjianai/microsoft-copilot-porxy 改写; 前端 rewritebody
 
 ## 简介
 
