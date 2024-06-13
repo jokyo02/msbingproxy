@@ -61,7 +61,7 @@ async function handleRequest(request, env,ctx) {
           url2.hostname = "www.bing.com";
         }
         if ( p.startsWith("/turing/")){
-           url2.hostname = "sydney.bing.com";
+           url2.hostname = "copilot.microsoft.com";
         }
         if (p == "/GetCredentialType.srf" || p.startsWith("/ppsecure/") || p == "/login.srf" || p == "/GetOneTimeCode.srf" || p == "/GetSessionState.srf" || p == "/GetExperimentAssignments.srf" || p == "/logout.srf") {
           url2.hostname = "login.live.com";
