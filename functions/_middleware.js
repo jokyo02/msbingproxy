@@ -291,6 +291,10 @@ async function websocketPorxy(request) {
     headers.set("origin", "https://www.bing.com");
   }
   headers.append("X-forwarded-for", XForwardedForIP);
+  headers.set(
+        'user-agent',
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 15_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.7 Mobile/15E148 Safari/605.1.15 BingSapphire/1.0.410427012'
+      );
   return fetch(reqUrl, {
     body: request.body,
     headers,
