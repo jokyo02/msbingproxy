@@ -15,7 +15,7 @@
             try {
                 return new URL(value);
             } catch (e) {
-                if ((value.startsWith("/")) ||(value.startsWith("/chat"))) {
+                if ((value.startsWith("/")) || (value.startsWith("/chat")) || (value.startsWith("/search"))) {
                     let url = new URL(`${window.location.origin}${value}`)
                     return url
                 } else {
