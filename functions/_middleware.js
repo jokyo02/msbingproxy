@@ -58,7 +58,7 @@ async function handleRequest(request, env,ctx) {
           url2.hostname = "sydney.bing.com";
         }
         if (p == "/" || p.startsWith("/rp/") || p == "/favicon.ico" || p.startsWith("/fd/") || p.startsWith("/rewardsapp/") || p.startsWith("/notifications/") || p.startsWith("/sa/") || p.startsWith("/rs/") || p.startsWith("/sharing/") || p.startsWith("/sydchat/") || p.startsWith("/turing/") || p.startsWith("/th") || p.startsWith("/Identity/") || p.startsWith("/hamburger/") || p.startsWith("/secure/") || p == "/bingufsync" || p == "/passport.aspx" || p.startsWith("/images/") || p.startsWith("/idp/") || p.startsWith("/cdx/") || p.startsWith("/pwa/") || p.startsWith("/videos/")) {
-          url2.hostname = "copilot.microsoft.com";
+          url2.hostname = "www.bing.com";
         }
         if (p == "/GetCredentialType.srf" || p.startsWith("/ppsecure/") || p == "/login.srf" || p == "/GetOneTimeCode.srf" || p == "/GetSessionState.srf" || p == "/GetExperimentAssignments.srf" || p == "/logout.srf") {
           url2.hostname = "login.live.com";
@@ -85,7 +85,7 @@ async function handleRequest(request, env,ctx) {
           const originUrl = new URL(origin);
           originUrl.protocol = "https:";
           originUrl.port = "";
-          originUrl.hostname = "copilot.microsoft.com";
+          originUrl.hostname = "www.bing.com";
           if (url2.pathname == "/GetCredentialType.srf" || url2.pathname.startsWith("/ppsecure/") || url2.pathname == "/GetExperimentAssignments.srf" || url2.pathname == "/secure/Passport.aspx") {
             originUrl.hostname = "login.live.com";
           }
@@ -104,7 +104,7 @@ async function handleRequest(request, env,ctx) {
           let refererUrl = new URL(referer);
           refererUrl.protocol = "https:";
           refererUrl.port = "";
-          refererUrl.hostname = "copilot.microsoft.com";
+          refererUrl.hostname = "www.bing.com";
           if (url2.pathname == "/secure/Passport.aspx" || url2.pathname.startsWith("/ppsecure/") || url2.pathname == "/GetExperimentAssignments.srf" || url2.pathname == "/GetCredentialType.srf") {
             refererUrl.hostname = "login.live.com";
           }
@@ -125,25 +125,25 @@ async function handleRequest(request, env,ctx) {
         if (p == "/secure/Passport.aspx" || p == "/passport.aspx") {
           let requrl = url2.searchParams.get("requrl");
           if (requrl) {
-            url2.searchParams.set("requrl", requrl.replace(porxyOrigin, "https://copilot.microsoft.com"));
+            url2.searchParams.set("requrl", requrl.replace(porxyOrigin, "https://www.bing.com"));
           }
         }
         if (p == "/fd/auth/signin") {
           let requrl = url2.searchParams.get("return_url");
           if (requrl) {
-            url2.searchParams.set("return_url", requrl.replace(porxyOrigin, "https://copilot.microsoft.com"));
+            url2.searchParams.set("return_url", requrl.replace(porxyOrigin, "https://www.bing.com"));
           }
         }
         if (p == "/Identity/Dropdown" || p == "/Identity/Hamburger") {
           let requrl = url2.searchParams.get("ru");
           if (requrl) {
-            url2.searchParams.set("ru", requrl.replace(porxyOrigin, "https://copilot.microsoft.com"));
+            url2.searchParams.set("ru", requrl.replace(porxyOrigin, "https://www.bing.com"));
           }
         }
         if (p == "/login.srf") {
           let requrl = url2.searchParams.get("wreply");
           if (requrl) {
-            url2.searchParams.set("wreply", requrl.replace(porxyOrigin, "https://copilot.microsoft.com"));
+            url2.searchParams.set("wreply", requrl.replace(porxyOrigin, "https://www.bing.com"));
           }
         }
         return config;
@@ -153,7 +153,7 @@ async function handleRequest(request, env,ctx) {
         const p = url2.pathname;
         if (p == "/sydney/UpdateConversation") {
           let bodyjson = await req.text();
-          bodyjson = bodyjson.replaceAll(porxyOrigin, "https://copilot.microsoft.com");
+          bodyjson = bodyjson.replaceAll(porxyOrigin, "https://www.bing.com");
           config.init.body = bodyjson;
         }
         return config;
@@ -166,7 +166,7 @@ async function handleRequest(request, env,ctx) {
         }
         let sdata = url2.searchParams.get("DATA");
         if (sdata) {
-          sdata = sdata.replaceAll(porxyOrigin, "https://copilot.microsoft.com");
+          sdata = sdata.replaceAll(porxyOrigin, "https://www.bing.com");
           url2.searchParams.set("DATA", sdata);
         }
         return config;
@@ -284,7 +284,7 @@ async function websocketPorxy(request) {
   reqUrl.port = "";
   const headers = new Headers(request.headers);
   if (headers.get("origin")) {
-    headers.set("origin", "https://copilot.microsoft.com");
+    headers.set("origin", "https://www.bing.com");
   }
   headers.append("X-forwarded-for", XForwardedForIP);
   return fetch(reqUrl, {
