@@ -56,7 +56,7 @@ async function handleRequest(request, env,ctx) {
         const p = url2.pathname;
         if (p.startsWith("/sydney/")) {
       //    url2.hostname = "prosyd.pages.dev";
-          url2.hostname = "free.nbing.eu.org";
+          url2.hostname = "aiu.pages.dev";
         }
       //  if (p == "/" || p.startsWith("/rp/") || p.startsWith("/chat") || p.startsWith("/search") || p == "/favicon.ico" || p.startsWith("/fd/") || p.startsWith("/rewardsapp/") || p.startsWith("/notifications/") || p.startsWith("/sa/") || p.startsWith("/rs/") || p.startsWith("/sharing/") || p.startsWith("/sydchat/") || p.startsWith("/turing/") || p.startsWith("/th") || p.startsWith("/Identity/") || p.startsWith("/hamburger/") || p.startsWith("/secure/") || p == "/bingufsync" || p == "/passport.aspx" || p.startsWith("/images") || p.startsWith("/idp/") || p.startsWith("/cdx/") || p.startsWith("/pwa/") || p.startsWith("/videos") || p.startsWith("/welcomescreenassets") || p.startsWith("/geolocation") || p.startsWith("/maps")) {
           if (p == "/" || p.startsWith("/rp/") || p.startsWith("/chat") || p.startsWith("/search") || p == "/favicon.ico" || p.startsWith("/fd/") || p.startsWith("/rewardsapp/") || p.startsWith("/notifications/") || p.startsWith("/sa/") || p.startsWith("/rs/") || p.startsWith("/sharing/") || p.startsWith("/sydchat/") || p.startsWith("/turing/") || p.startsWith("/th") || p.startsWith("/Identity/") || p.startsWith("/hamburger/") || p.startsWith("/secure/") || p == "/bingufsync" || p == "/passport.aspx" || p.startsWith("/images") || p.startsWith("/idp/") || p.startsWith("/cdx/") || p.startsWith("/pwa/") || p.startsWith("/videos") || p.startsWith("/maps")) {
