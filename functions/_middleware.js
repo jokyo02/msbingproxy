@@ -61,9 +61,9 @@ async function handleRequest(request, env,ctx) {
           if (p == "/" || p.startsWith("/rp/") || p.startsWith("/chat") || p.startsWith("/search") || p == "/favicon.ico" || p.startsWith("/fd/") || p.startsWith("/rewardsapp/") || p.startsWith("/notifications/") || p.startsWith("/sa/") || p.startsWith("/rs/") || p.startsWith("/sharing/") || p.startsWith("/sydchat/") || p.startsWith("/turing/") || p.startsWith("/th") || p.startsWith("/Identity/") || p.startsWith("/hamburger/") || p.startsWith("/secure/") || p == "/bingufsync" || p == "/passport.aspx" || p.startsWith("/images") || p.startsWith("/idp/") || p.startsWith("/cdx/") || p.startsWith("/pwa/") || p.startsWith("/videos") || p.startsWith("/maps")) {
             url2.hostname = "www.bing.com";
         }
-        if (p == "/GetCredentialType.srf" || p.startsWith("/ppsecure/") || p == "/login.srf" || p == "/GetOneTimeCode.srf" || p == "/GetSessionState.srf" || p == "/GetExperimentAssignments.srf" || p == "/logout.srf") {
-          url2.hostname = "login.live.com";
-        }
+    //    if (p == "/GetCredentialType.srf" || p.startsWith("/ppsecure/") || p == "/login.srf" || p == "/GetOneTimeCode.srf" || p == "/GetSessionState.srf" || p == "/GetExperimentAssignments.srf" || p == "/logout.srf") {
+    //      url2.hostname = "login.live.com";
+    //    }
         if (p.startsWith("/users/")) {
           url2.hostname = "storage.live.com";
         }
@@ -87,9 +87,9 @@ async function handleRequest(request, env,ctx) {
           originUrl.protocol = "https:";
           originUrl.port = "";
           originUrl.hostname = "www.bing.com";
-          if (url2.pathname == "/GetCredentialType.srf" || url2.pathname.startsWith("/ppsecure/") || url2.pathname == "/GetExperimentAssignments.srf" || url2.pathname == "/secure/Passport.aspx") {
-            originUrl.hostname = "login.live.com";
-          }
+      //    if (url2.pathname == "/GetCredentialType.srf" || url2.pathname.startsWith("/ppsecure/") || url2.pathname == "/GetExperimentAssignments.srf" || url2.pathname == "/secure/Passport.aspx") {
+      //      originUrl.hostname = "login.live.com";
+      //    }
           if (url2.pathname.startsWith("/pocybig/")) {
             originUrl.hostname = "www.bing.com";
           }
@@ -106,9 +106,9 @@ async function handleRequest(request, env,ctx) {
           refererUrl.protocol = "https:";
           refererUrl.port = "";
           refererUrl.hostname = "www.bing.com";
-          if (url2.pathname == "/secure/Passport.aspx" || url2.pathname.startsWith("/ppsecure/") || url2.pathname == "/GetExperimentAssignments.srf" || url2.pathname == "/GetCredentialType.srf") {
-            refererUrl.hostname = "login.live.com";
-          }
+      //   if (url2.pathname == "/secure/Passport.aspx" || url2.pathname.startsWith("/ppsecure/") || url2.pathname == "/GetExperimentAssignments.srf" || url2.pathname == "/GetCredentialType.srf") {
+      //      refererUrl.hostname = "login.live.com";
+      //    }
           if (url2.pathname.startsWith("/pocybig/")) {
             refererUrl.hostname = "challenges.cloudflare.com";
             refererUrl.pathname = refererUrl.pathname.replace("/pocybig/", "/cdn-cgi/");
@@ -120,6 +120,7 @@ async function handleRequest(request, env,ctx) {
         }
         return config;
       },
+      /*
       async (config) => {
         const url2 = config.url;
         const p = url2.pathname;
@@ -149,6 +150,7 @@ async function handleRequest(request, env,ctx) {
         }
         return config;
       },
+      */
       async (config, req) => {
         const url2 = config.url;
         const p = url2.pathname;
