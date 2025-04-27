@@ -63,7 +63,11 @@ async function handleRequest(request, env,ctx) {
             url2.hostname = "www.bing.com";
         }
 
-           if ( p.startsWith("/shux") || p.startsWith("/wpt") || p.startsWith("/deepsearch") || p.startsWith("/copilotsearch")) {
+     //      if ( p.startsWith("/shux") || p.startsWith("/wpt") || p.startsWith("/deepsearch") || p.startsWith("/copilotsearch")) {
+     //       url2.hostname = "www.bing.com";
+     //   }
+
+           if (  p.startsWith("/deepsearch") || p.startsWith("/copilotsearch")) {
             url2.hostname = "www.bing.com";
         }
     //    if (p == "/GetCredentialType.srf" || p.startsWith("/ppsecure/") || p == "/login.srf" || p == "/GetOneTimeCode.srf" || p == "/GetSessionState.srf" || p == "/GetExperimentAssignments.srf" || p == "/logout.srf") {
