@@ -292,11 +292,11 @@ async function handleRequest(request, env,ctx) {
         resHeaders.set("Location", lotoUrl.toString());
         return config;
       },
-      async (config) => {
+      async (config, res) => {
       config.init.headers = new Headers(config.init.headers);
-      const url2 = config.url;
-      const p = url2.pathname;
-      if (p.startsWith("/copilotsearch")) {
+
+      const resUrl = new URL(res.url);
+      if (resUrl.startsWith("/copilotsearch")) {
       // 从 bcct.pages.dev 获取 cookies 并写入当前站点
     //  const { hostname } = new URL(config.url);
       const cctresp = await fetch('https://bcct.pages.dev');
