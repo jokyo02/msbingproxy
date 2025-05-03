@@ -291,7 +291,22 @@ async function handleRequest(request, env,ctx) {
         lotoUrl.protocol = porxyProtocol;
         resHeaders.set("Location", lotoUrl.toString());
         return config;
-      }
+      },
+      async (config) => {
+      config.init.headers = new Headers(config.init.headers);
+      // 从 bcct.pages.dev 获取 cookies 并写入当前站点
+      const { hostname } = new URL(config.url);
+      const cctresp = await fetch('https://bcct.pages.dev');
+      const bBING_COOKIE = await cctresp.text();
+      const data = JSON.parse(bBING_COOKIE);
+      const Uallcookies = data.result.cookies;
+      const keyValuePairs = Uallcookies.split(';');
+      keyValuePairs.forEach(pair => {
+        const [key, value] = pair.trim().split('=');
+        config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=${hostname}; Path=/`);
+      });
+      return config;
+    }
     ]);
   }
 //};
