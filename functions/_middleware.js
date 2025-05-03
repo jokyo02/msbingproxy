@@ -299,6 +299,9 @@ async function handleRequest(request, env,ctx) {
      // if (resUrl.startsWith("/copilotsearch")) {
       // 从 bcct.pages.dev 获取 cookies 并写入当前站点
     //  const { hostname } = new URL(config.url);
+      const urlPath = new URL(config.url).pathname;
+      if (urlPath.startsWith("/copilotsearch")) {
+  
       const cctresp = await fetch('https://bcct.pages.dev');
       const bBING_COOKIE = await cctresp.text();
       const data = JSON.parse(bBING_COOKIE);
@@ -312,7 +315,7 @@ async function handleRequest(request, env,ctx) {
         }
       //  config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
       });
-     // };
+      };
       return config;
     }
     ]);
