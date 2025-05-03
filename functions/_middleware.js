@@ -292,11 +292,11 @@ async function handleRequest(request, env,ctx) {
         resHeaders.set("Location", lotoUrl.toString());
         return config;
       },
-      async (config, res) => {
+      async (config) => {
       config.init.headers = new Headers(config.init.headers);
 
-      const resUrl = new URL(res.url);
-      if (resUrl.startsWith("/copilotsearch")) {
+     // const resUrl = new URL(res.url);
+     // if (resUrl.startsWith("/copilotsearch")) {
       // 从 bcct.pages.dev 获取 cookies 并写入当前站点
     //  const { hostname } = new URL(config.url);
       const cctresp = await fetch('https://bcct.pages.dev');
@@ -312,7 +312,7 @@ async function handleRequest(request, env,ctx) {
         }
       //  config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
       });
-      };
+     // };
       return config;
     }
     ]);
