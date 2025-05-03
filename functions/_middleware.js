@@ -313,8 +313,7 @@ async function handleRequest(request, env,ctx) {
         if (key.toLowerCase() === "cct") {
           config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
         }
-      //  config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
-      });
+       });
       };
       return config;
     }
