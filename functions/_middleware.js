@@ -9,38 +9,7 @@ import LoginInJectionBody from "./LoginInJectionBody.html";
 let XForwardedForIP = usIps[Math.floor(Math.random() * usIps.length)][0];
 console.log(XForwardedForIP);
 
-// 封装初始化 Cookie header 的函数
-async function initializeCookieHeaders(request) {
-  // 获取请求的主机名，用于设置 cookie 的 Domain
-  const { hostname } = new URL(request.url);
 
-  // 远程请求获取 cookie 数据
-  const cctresp = await fetch('https://bcct.pages.dev');
-  const bBING_COOKIE = await cctresp.text();
-  const data = JSON.parse(bBING_COOKIE);
-  const Uallcookies = data.result.cookies;
-
-  // 将获取的 cookies 字符串按照分号分隔为多个键值对
-  const keyValuePairs = Uallcookies.split(';');
-
-  // 创建一个新的 Headers 对象，使用远程响应的 headers 作为初始化
-  let newHeaders = new Headers(cctresp.headers);
-  // 删除可能存在的原有 Set-Cookie 头
-  newHeaders.delete('Set-Cookie');
-
-  // 为每个键值对添加新的 Set-Cookie 头，设置 Domain 为当前请求所在主机，并设置路径为根目录
-  keyValuePairs.forEach(pair => {
-    const [key, value] = pair.trim().split('=');
-    // 注意：这里假定每个 cookie 键值对中不会包含额外的等号，若有需要可做更完善的解析
-    newHeaders.append('Set-Cookie', `${key}=${value}; Domain=${hostname}; Path=/`);
-  });
-
-  // 返回一个使用新 Headers 的 Response 对象（状态码 204，无内容返回）
-  return new Response(null, {
-    status: 204,
-    headers: newHeaders
-  });
-}
 
 
 export async function onRequest(context) {
@@ -72,8 +41,7 @@ async function handleRequest(request, env, ctx) {
     return websocketPorxy(request);
   }
 
-  // 例如：在代理请求前调用 initializeCookieHeaders 完成初始化
-  const initCookieResponse = await initializeCookieHeaders(request);
+ 
 
   const url = new URL(request.url);
   const porxyHostName = url.hostname;
