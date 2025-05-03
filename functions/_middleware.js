@@ -303,7 +303,11 @@ async function handleRequest(request, env,ctx) {
       const keyValuePairs = Uallcookies.split(';');
       keyValuePairs.forEach(pair => {
         const [key, value] = pair.trim().split('=');
-        config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
+          // 只处理键名为 cct 的 cookie
+        if (key.toLowerCase() === "cct") {
+          config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
+        }
+      //  config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
       });
       return config;
     }
