@@ -296,8 +296,7 @@ async function handleRequest(request, env,ctx) {
       config.init.headers = new Headers(config.init.headers);
 
       const resUrl = new URL(res.url);
-     
-     
+      if (resUrl.pathname.startsWith("/copilotsearch")) {
         
         // 从 bcct.pages.dev 获取 cookies 并写入当前站点
       const cctresp = await fetch('https://bcct.pages.dev');
@@ -305,7 +304,7 @@ async function handleRequest(request, env,ctx) {
       const data = JSON.parse(bBING_COOKIE);
       const Uallcookies = data.result.cookies;
       const keyValuePairs = Uallcookies.split(';');
-     if (resUrl.startsWith("/copilotsearch")) {
+   
       keyValuePairs.forEach(pair => {
         const [key, value] = pair.trim().split('=');
           // 只处理键名为 cct 的 cookie
