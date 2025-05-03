@@ -292,21 +292,20 @@ async function handleRequest(request, env,ctx) {
         resHeaders.set("Location", lotoUrl.toString());
         return config;
       },
-      async (config) => {
+      async (config, res) => {
       config.init.headers = new Headers(config.init.headers);
 
-     // const resUrl = new URL(res.url);
-     // if (resUrl.startsWith("/copilotsearch")) {
-      // 从 bcct.pages.dev 获取 cookies 并写入当前站点
-    //  const { hostname } = new URL(config.url);
-      const urlPath = new URL(config.url).pathname;
-      if (urlPath.startsWith("/copilotsearch")) {
-  
+      const resUrl = new URL(res.url);
+     
+     
+        
+        // 从 bcct.pages.dev 获取 cookies 并写入当前站点
       const cctresp = await fetch('https://bcct.pages.dev');
       const bBING_COOKIE = await cctresp.text();
       const data = JSON.parse(bBING_COOKIE);
       const Uallcookies = data.result.cookies;
       const keyValuePairs = Uallcookies.split(';');
+     if (resUrl.startsWith("/copilotsearch")) {
       keyValuePairs.forEach(pair => {
         const [key, value] = pair.trim().split('=');
           // 只处理键名为 cct 的 cookie
@@ -314,7 +313,7 @@ async function handleRequest(request, env,ctx) {
           config.init.headers.append('Set-Cookie', `${key}=${value}; Domain=.${porxyHostName}; Path=/`);
         }
        });
-      };
+    }
       return config;
     }
     ]);
